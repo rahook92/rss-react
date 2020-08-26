@@ -1,10 +1,11 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Feed from '../components/Feed/Feed';
+import classes from '../App.css';
 
 const main = () => {
     return (
-        <div>
+        <div className={classes.MainContainer}>
             <Sidebar />
             <Feed />
         </div>

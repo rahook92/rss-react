@@ -1,0 +1,6 @@
+.FeedCard {
+    display: flex;
+    width: 96%;
+    height: 30%;
+    margin: 2%;
+}
