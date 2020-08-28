@@ -5,4 +5,10 @@
 .Link {
     color: white;
     text-decoration: none;
+    display: block;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
 }

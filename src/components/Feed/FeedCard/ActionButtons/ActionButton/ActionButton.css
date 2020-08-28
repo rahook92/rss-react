@@ -3,4 +3,9 @@
     width: 80%;
     height: 25px;
     margin: 8% auto;
+    color: white;
+    font-family: Montserrat;
+    font-size: 18px;
+    text-align: center;
+    border: none;
 }

@@ -6,8 +6,8 @@ import classes from './Sidebar.css';
 const sidebar = (props) => {
     return (
         <div className={classes.Sidebar}>
-            <SidebarHeader />
-            <SidebarBody />
+            <SidebarHeader getRecent={props.getRecent} />
+            <SidebarBody clicked={props.clicked} />
         </div>
     );
 }

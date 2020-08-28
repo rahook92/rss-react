@@ -10,7 +10,8 @@ const feedCard = (props) => {
             <Image />
             <Preview 
                 title={props.title} 
-                content={props.content} 
+                content={props.content}
+                URL={props.articleURL} 
                 clicked={props.clicked} />
             <ActionButtons />
         </div>

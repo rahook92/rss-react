@@ -5,8 +5,8 @@ import classes from './ActionButtons.css';
 const actionButtons = (props) => {
     return (
         <div className={classes.ActionButtons}>
-            <ActionButton />
-            <ActionButton />
+            <ActionButton text={'Share'} />
+            <ActionButton text={'Read Later'} />
             <ActionButton />
         </div>
     );

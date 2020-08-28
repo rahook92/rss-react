@@ -4,9 +4,9 @@ import classes from './SidebarBody.css';
 const sidebarBody = (props) => {
     return (
         <div classes={classes.SidebarBody}>
-            <a className={classes.Link} href='#'><div>Link</div></a>
-            <a className={classes.Link} href='#'><div>Link</div></a>
-            <a className={classes.Link} href='#'><div>Link</div></a>
+            <button onClick={() => { props.clicked('Guardian') }} className={classes.Link}>Guardian</button>
+            <button onClick={() => { props.clicked('NYTimes') }} className={classes.Link}>New York Times</button>
+            <button onClick={() => { props.clicked('News') }} className={classes.Link}>News-API</button>
         </div>
     );
 }
