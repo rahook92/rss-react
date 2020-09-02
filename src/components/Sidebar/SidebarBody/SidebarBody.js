@@ -6,7 +6,7 @@ const sidebarBody = (props) => {
     return (
         <div classes={classes.SidebarBody}>
             <Filters />
-            <button onClick={() => { props.clicked('Guardian') }} className={classes.Link}>Complex</button>
+            <button onClick={() => { props.clicked('Complex') }} className={classes.Link}>Complex</button>
         </div>
     );
 }
