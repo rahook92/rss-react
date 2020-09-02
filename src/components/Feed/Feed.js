@@ -11,8 +11,9 @@ const feed = (props) => {
                     key={article.id} 
                     title={article.title}
                     content={article.content}
-                    image={article.image}
-                    articleURL={article.articleURL}
+                    image={article.thumbnail}
+                    articleURL={article.link}
+                    shareClick={props.shareClick}
                     clicked={() => { props.clickHandler(article.id) }} />;
     })
 

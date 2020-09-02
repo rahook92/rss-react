@@ -7,13 +7,13 @@ import classes from './FeedCard.css';
 const feedCard = (props) => {
     return (
         <div className={classes.FeedCard}>
-            <Image />
+            <Image image={props.image} />
             <Preview 
                 title={props.title} 
                 content={props.content}
                 URL={props.articleURL} 
                 clicked={props.clicked} />
-            <ActionButtons />
+            <ActionButtons URL={props.articleURL} shareClick={props.shareClick} />
         </div>
     );
 }

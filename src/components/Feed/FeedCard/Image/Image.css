@@ -1,7 +1,7 @@
 .Image {
     width: 25%;
-    background-color: black;
-    background-image: url('../../../../assets/placeholder.jpg');
-    background-size: 140% 100%;
-    background-position: -50px;
+}
+img {
+    max-width: 100%;
+    height: auto;
 }

@@ -5,7 +5,7 @@ import classes from './ActionButtons.css';
 const actionButtons = (props) => {
     return (
         <div className={classes.ActionButtons}>
-            <ActionButton text={'Share'} />
+            <ActionButton URL={props.URL} text={'Share'} shareClick={props.shareClick} />
             <ActionButton text={'Read Later'} />
             <ActionButton />
         </div>
