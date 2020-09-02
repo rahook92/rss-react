@@ -8,7 +8,7 @@ const sidebar = (props) => {
         <div className={classes.Sidebar}>
             <button onClick={props.xmlRead}>getXML</button>
             <SidebarHeader getRecent={props.getRecent} />
-            <SidebarBody clicked={props.clicked} />
+            <SidebarBody xmlURL={props.xmlURL} clicked={props.clicked} />
         </div>
     );
 }
