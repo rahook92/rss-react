@@ -33,16 +33,31 @@ class Main extends Component {
         'Salon' : {
             url : "https://cors-anywhere.herokuapp.com/www.salon.com/feed/",
             getXML: (name,num) => { this.getXML(name,num) }
+        },
+        'Guardian' : {
+            url: "https://cors-anywhere.herokuapp.com/www.theguardian.com/us/rss",
+            getXML: (name,num) => { this.getXML(name,num) }
+        },
+        'Huffpost' : {
+            url: "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/front-page/feed",
+            getXML: (name,num) => { this.getXML(name,num) }
+        },
+        'FiveThirtyEight' : {
+            url: "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/all/feed",
+            getXML: (name,num) => { this.getXML(name,num) }
         }
+
     }
 
     componentDidMount(){
         this.getRecent();
-        this.myRes();
+        // for(var key in this.xmlURL){
+        //     this.myRes(this.xmlURL[key].url);
+        // }
     }
 
-    myRes = () => {
-        axios.get("https://cors-anywhere.herokuapp.com/www.salon.com/feed/", {
+    myRes = (url) => {
+        axios.get(url, {
             "Content-Type": "application/xml; charset=utf-8"
         }).then(res => {
             const xml = res.data;
@@ -72,7 +87,7 @@ class Main extends Component {
                         id: Math.random() * 100,
                         title: item.title[0],
                         link: item.link[0],
-                        thumbnail: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/cute-chick-laura-mountainspring.jpg'
+                        thumbnail: item['media:thumbnail'] ? item['media:thumbnail'][0]['$'].url : null
                     })
                 })
                 this.setState({ articles: articles });
@@ -95,17 +110,15 @@ class Main extends Component {
       
     }
 
-    getRecent = async() => {
+    getRecent = () => {
 
         let articles = [];
         this.setState( {articles: articles} );
-        
-        const complex = await this.xmlURL['Complex'].getXML('Complex', 2)
-        const wired = await this.xmlURL['Wired'].getXML('Wired', 2);
-        const rollingStone = await this.xmlURL['Rolling Stone'].getXML('Rolling Stone', 2);
-        const salon = await this.xmlURL['Salon'].getXML('Salon', 2);
 
-        return Promise.all( [complex, wired, rollingStone, salon] );
+        for(var key in this.xmlURL){
+            this.xmlURL[key].getXML(key, 2)
+        }
+
     }
 
     clickHandler = (id) => {
