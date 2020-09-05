@@ -15,7 +15,7 @@ const feedCard = (props) => {
                 URL={props.articleURL} 
                 clicked={props.clicked}
                 noImg={!props.image} />
-            <ActionButtons URL={props.articleURL} shareClick={props.shareClick} />
+            <ActionButtons URL={props.articleURL} title={props.title} shareClick={props.shareClick} />
         </div>
     );
 }

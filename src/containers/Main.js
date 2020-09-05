@@ -172,7 +172,9 @@ class Main extends Component {
         this.setState({ sharing: {
             isSharing: true,
             url: url
-        } });
+        } }, ()=>{
+            console.log(this.state.sharing.url);
+        });
     }
 
     render(){
