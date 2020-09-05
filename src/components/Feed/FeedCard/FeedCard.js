@@ -4,6 +4,7 @@ import Preview from './Preview/Preview';
 import ActionButtons from './ActionButtons/ActionButtons';
 import classes from './FeedCard.css';
 
+
 const feedCard = (props) => {
     return (
         <div className={classes.FeedCard}>
@@ -12,7 +13,8 @@ const feedCard = (props) => {
                 title={props.title} 
                 content={props.content}
                 URL={props.articleURL} 
-                clicked={props.clicked} />
+                clicked={props.clicked}
+                noImg={!props.image} />
             <ActionButtons URL={props.articleURL} shareClick={props.shareClick} />
         </div>
     );

@@ -11,7 +11,7 @@ const sidebarBody = (props) => {
 
     return (
         <div classes={classes.SidebarBody}>
-            <Filters />
+            <Filters getRecent={props.getRecent} />
             {
                 feeds.map(feed => {
                     return (

@@ -6,9 +6,8 @@ import classes from './Sidebar.css';
 const sidebar = (props) => {
     return (
         <div className={classes.Sidebar}>
-            <button onClick={props.xmlRead}>getXML</button>
             <SidebarHeader getRecent={props.getRecent} />
-            <SidebarBody xmlURL={props.xmlURL} clicked={props.clicked} />
+            <SidebarBody xmlURL={props.xmlURL} getRecent={props.getRecent} clicked={props.clicked} />
         </div>
     );
 }

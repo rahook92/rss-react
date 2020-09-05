@@ -19,63 +19,97 @@ class Main extends Component {
 
     xmlURL = {
         'Complex' : {
-            url : "https://cors-anywhere.herokuapp.com/assets.complex.com/feeds/channels/pop-culture.xml",
-            getXML: (name,num) => { this.getXML(name,num) }
+            urls : {
+                'All' : "https://cors-anywhere.herokuapp.com/assets.complex.com/feeds/channels/all.xml",
+                'Music' : "https://cors-anywhere.herokuapp.com/assets.complex.com/feeds/channels/music.xml",
+                'Culture' : "https://cors-anywhere.herokuapp.com/assets.complex.com/feeds/channels/pop-culture.xml"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         },
         'Wired' : {
-            url : "https://cors-anywhere.herokuapp.com/www.wired.com/feed/rss",
-            getXML: (name,num) => { this.getXML(name,num) }          
+            urls : {
+                'All' : "https://cors-anywhere.herokuapp.com/www.wired.com/feed",
+                'Business' : "https://cors-anywhere.herokuapp.com/www.wired.com/category/business/feed",
+                'Culture' : "https://cors-anywhere.herokuapp.com/www.wired.com/category/culture/feed",
+                'Science' : "https://cors-anywhere.herokuapp.com/www.wired.com/category/science/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name,num, ext) }          
         },
         'Rolling Stone' : {
-            url : "https://cors-anywhere.herokuapp.com/www.rollingstone.com/music/feed",
-            getXML: (name,num) => { this.getXML(name,num) }
+            urls : {
+                'All' : "https://cors-anywhere.herokuapp.com/www.rollingstone.com/feed",
+                'Music' : "https://cors-anywhere.herokuapp.com/www.rollingstone.com/music/feed",
+                'Culture' : "https://cors-anywhere.herokuapp.com/www.rollingstone.com/culture/feed",
+                'Politics' : "https://cors-anywhere.herokuapp.com/www.rollingstone.com/politics/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         },
         'Salon' : {
-            url : "https://cors-anywhere.herokuapp.com/www.salon.com/feed/",
-            getXML: (name,num) => { this.getXML(name,num) }
+            urls : {
+                'All' : "https://cors-anywhere.herokuapp.com/www.salon.com/feed/",
+                'Culture' : "https://cors-anywhere.herokuapp.com/www.salon.com/category/culture/feed",
+                'Politics' : "https://cors-anywhere.herokuapp.com/www.salon.com/category/news-and-politics/feed",
+                'Science' : "https://cors-anywhere.herokuapp.com/www.salon.com/category/science-and-health/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         },
         'Guardian' : {
-            url: "https://cors-anywhere.herokuapp.com/www.theguardian.com/us/rss",
-            getXML: (name,num) => { this.getXML(name,num) }
+            urls: {
+                'All' : "https://cors-anywhere.herokuapp.com/www.theguardian.com/us/rss",
+                'Sports' : "https://cors-anywhere.herokuapp.com/www.theguardian.com/us/sport/rss",
+                'Culture' : "https://cors-anywhere.herokuapp.com/www.theguardian.com/us/culture/rss"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         },
         'Huffpost' : {
-            url: "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/front-page/feed",
-            getXML: (name,num) => { this.getXML(name,num) }
+            urls: {
+                'All' : "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/front-page/feed",
+                'Business' : "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/business/feed",
+                'Science' : "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/science/feed",
+                'Politics' : "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/politics/feed",
+                'Culture' : "https://cors-anywhere.herokuapp.com/www.huffpost.com/section/arts/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         },
         'FiveThirtyEight' : {
-            url: "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/all/feed",
-            getXML: (name,num) => { this.getXML(name,num) }
+            urls: {
+                'All' : "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/all/feed",
+                'Politics' : "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/politics/feed",
+                'Sports' : "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/sports/feed",
+                "Science" : "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/science/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         }
 
     }
 
     componentDidMount(){
-        this.getRecent();
+        for(var key in this.xmlURL){
+            this.xmlURL[key].getXML(key, 2, 'All');
+        }
         // for(var key in this.xmlURL){
         //     this.myRes(this.xmlURL[key].url);
         // }
     }
 
-    myRes = (url) => {
-        axios.get(url, {
-            "Content-Type": "application/xml; charset=utf-8"
-        }).then(res => {
-            const xml = res.data;
-            parseString(xml, (err,res)=>{
-                const items = res;
-                console.log(items);
-            })
-        })
-    }
+    // myRes = (url) => {
+    //     axios.get(url, {
+    //         "Content-Type": "application/xml; charset=utf-8"
+    //     }).then(res => {
+    //         const xml = res.data;
+    //         parseString(xml, (err,res)=>{
+    //             const items = res;
+    //             console.log(items);
+    //         })
+    //     })
+    // }
 
-    
-
-    // thumb = item['media:thumbnail'][0]['$'].url;
 
     //Xml Request Function
-    getXML = (name,num) => {
+    getXML = (name, num, ext = 'All') => {
 
-        return axios.get(this.xmlURL[name].url, {
+
+        return axios.get(this.xmlURL[name].urls[ext], {
             "Content-Type": "application/xml; charset=utf-8"
         }).then(res => {
             let articles = [...this.state.articles];
@@ -110,13 +144,15 @@ class Main extends Component {
       
     }
 
-    getRecent = () => {
+    getRecent = (ext) => {
 
         let articles = [];
         this.setState( {articles: articles} );
 
         for(var key in this.xmlURL){
-            this.xmlURL[key].getXML(key, 2)
+            if(this.xmlURL[key].urls.hasOwnProperty(ext)){
+                this.xmlURL[key].getXML(key, 2, ext);
+            }
         }
 
     }
@@ -142,7 +178,7 @@ class Main extends Component {
     render(){
         return (
             <div className={classes.MainContainer}>
-                <Sidebar getRecent={this.getRecent} clicked={this.apiClickHandler} xmlRead={this.getXML} xmlURL={this.xmlURL}/>
+                <Sidebar getRecent={this.getRecent} clicked={this.apiClickHandler} xmlRead={this.getXML} xmlURL={this.xmlURL} />
                 <Feed articles={this.state.articles} clickHandler={this.clickHandler} shareClick={this.isSharing} />
                 <Modal show={this.state.sharing.isSharing} url={this.state.sharing.url} noShow={this.notSharing} />
             </div>

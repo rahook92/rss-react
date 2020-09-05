@@ -1,0 +1,13 @@
+.Dropdown {
+    position: absolute;
+    left: 19%;
+    margin-top: 10px;
+}
+label {
+    color: white;
+    font-family: Montserrat;
+}
+select {
+    display: block;
+    margin-top: 1%;
+}
