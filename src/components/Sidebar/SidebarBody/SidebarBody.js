@@ -10,15 +10,17 @@ const sidebarBody = (props) => {
     }
 
     return (
-        <div classes={classes.SidebarBody}>
+        <div className={classes.SidebarBody}>
+            <div className='feed-buttons'>
+                {
+                    feeds.map(feed => {
+                        return (
+                        <button key={Math.random() * 100} onClick={() => { props.clicked(feed) }} className={classes.Link}>{ feed }</button>
+                        )
+                    })
+                }
+            </div>
             <Filters getRecent={props.getRecent} />
-            {
-                feeds.map(feed => {
-                    return (
-                    <button key={Math.random() * 100} onClick={() => { props.clicked(feed) }} className={classes.Link}>{ feed }</button>
-                    )
-                })
-            }
         </div>
     );
 }

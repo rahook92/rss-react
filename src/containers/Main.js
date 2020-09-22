@@ -79,6 +79,27 @@ class Main extends Component {
                 "Science" : "https://cors-anywhere.herokuapp.com/fivethirtyeight.com/science/feed"
             },
             getXML: (name, num, ext) => { this.getXML(name, num, ext) }
+        },
+        'Cracked-Magazine' : {
+            urls: {
+                'All' : "https://cors-anywhere.herokuapp.com/crackmagazine.net/news/feed",
+                'Music' : "https://cors-anywhere.herokuapp.com/crackmagazine.net/news/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
+        },
+        'XLR8R' : {
+            urls: {
+                'All' : "https://cors-anywhere.herokuapp.com/xlr8r.com/category/news/feed",
+                'Music' : "https://cors-anywhere.herokuapp.com/xlr8r.com/category/news/feed"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
+        },
+        'Pitchfork' : {
+            urls: {
+                'All' : "https://cors-anywhere.herokuapp.com/pitchfork.com/rss/news/",
+                'Music' : "https://cors-anywhere.herokuapp.com/pitchfork.com/rss/news/"
+            },
+            getXML: (name, num, ext) => { this.getXML(name, num, ext) }
         }
 
     }

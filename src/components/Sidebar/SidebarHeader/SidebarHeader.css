@@ -1,7 +1,7 @@
 .SidebarHeader {
     width: 100%;
     height: 10%;
-    background-color: maroon;
+    background-color: #EFEFE3;
     color: white;
     font-size: 30px;
     text-align: center;
@@ -20,7 +20,8 @@
     font-weight: 700;
 }
 .Browse {
-    font-size: 16px;
+    font-size: 22px;
     padding: 0;
     margin: 0;
+    color: darkgrey;
 }

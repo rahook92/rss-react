@@ -5,7 +5,8 @@ const actionButtons = (props) => {
     let title = props.title;
     return (
         <div className={classes.ActionButtons}>
-            <a href={"https://twitter.com/intent/tweet?text=" + title + "&url=" + props.URL } className={classes.ActionButton} data-show-count="false">Tweet</a>
+            <div>Share</div>
+            <a href={"https://twitter.com/intent/tweet?text=" + title + "&url=" + props.URL } className={classes.ActionButton} data-show-count="false">Twitter</a>
             <button className={classes.ActionButton}>Read Later</button>
         </div>
     );
