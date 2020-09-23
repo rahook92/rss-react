@@ -2,6 +2,10 @@
   "name": "final-portfolio",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node" : "8.11.3",
+    "npm" : "5.6.0"
+  },
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
