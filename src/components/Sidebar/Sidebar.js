@@ -7,7 +7,7 @@ const sidebar = (props) => {
     return (
         <div className={classes.Sidebar}>
             <SidebarHeader getRecent={props.getRecent} />
-            <SidebarBody xmlURL={props.xmlURL} getRecent={props.getRecent} clicked={props.clicked} />
+            <SidebarBody xmlURL={props.xmlURL} getRecent={props.getRecent} showModal={props.showModal} clicked={props.clicked} />
         </div>
     );
 }

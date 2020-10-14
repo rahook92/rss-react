@@ -13,7 +13,8 @@ class Main extends Component {
         sharing: {
             isSharing: false,
             url: null
-        }
+        },
+        modalVisible: false
     };
 
 
@@ -105,30 +106,16 @@ class Main extends Component {
     }
 
     componentDidMount(){
-        for(var key in this.xmlURL){
-            this.xmlURL[key].getXML(key, 2, 'All');
-        }
-        // for(var key in this.xmlURL){
-        //     this.myRes(this.xmlURL[key].url);
-        // }
-    }
 
-    // myRes = (url) => {
-    //     axios.get(url, {
-    //         "Content-Type": "application/xml; charset=utf-8"
-    //     }).then(res => {
-    //         const xml = res.data;
-    //         parseString(xml, (err,res)=>{
-    //             const items = res;
-    //             console.log(items);
-    //         })
-    //     })
-    // }
+            for(var key in this.xmlURL){
+                this.xmlURL[key].getXML(key, 2, 'All');
+            }
+        
+    }
 
 
     //Xml Request Function
     getXML = (name, num, ext = 'All') => {
-
 
         return axios.get(this.xmlURL[name].urls[ext], {
             "Content-Type": "application/xml; charset=utf-8"
@@ -145,8 +132,8 @@ class Main extends Component {
                         thumbnail: item['media:thumbnail'] ? item['media:thumbnail'][0]['$'].url : null
                     })
                 })
-                this.setState({ articles: articles });
             })
+            this.setState({articles: articles});
         })
     
     }
@@ -178,32 +165,36 @@ class Main extends Component {
 
     }
 
-    clickHandler = (id) => {
-        console.log('hiya');
-    }
+    // clickHandler = (id) => {
+    //     console.log('hiya');
+    // }
 
-    notSharing = () => {
-        this.setState({ sharing: {
-            isSharing: false,
-            url: null
-        } });
-    }
+    // notSharing = () => {
+    //     this.setState({ sharing: {
+    //         isSharing: false,
+    //         url: null
+    //     } });
+    // }
 
-    isSharing = (url) => {
-        this.setState({ sharing: {
-            isSharing: true,
-            url: url
-        } }, ()=>{
-            console.log(this.state.sharing.url);
-        });
+    // isSharing = (url) => {
+    //     this.setState({ sharing: {
+    //         isSharing: true,
+    //         url: url
+    //     } }, ()=>{
+    //         console.log(this.state.sharing.url);
+    //     });
+    // }
+    
+    showModal = () => {
+        this.setState({modalVisible: !this.state.modalVisible})
     }
 
     render(){
         return (
             <div className={classes.MainContainer}>
-                <Sidebar getRecent={this.getRecent} clicked={this.apiClickHandler} xmlRead={this.getXML} xmlURL={this.xmlURL} />
+                <Sidebar getRecent={this.getRecent} clicked={this.apiClickHandler} xmlRead={this.getXML} xmlURL={this.xmlURL} showModal={this.showModal} />
                 <Feed articles={this.state.articles} clickHandler={this.clickHandler} shareClick={this.isSharing} />
-                <Modal show={this.state.sharing.isSharing} url={this.state.sharing.url} noShow={this.notSharing} />
+                <Modal modalVisible={this.state.modalVisible} showModal={this.showModal} clicked={this.apiClickHandler} xmlURL={this.xmlURL} getRecent={this.getRecent} />
             </div>
         );
     }

@@ -1,18 +1,25 @@
-.ActionButtons {
-    width: 15%;
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
 }
 .ActionButton {
     background-color: grey;
-    width: 80%;
-    height: 25px;
-    margin: 8% auto;
+    height: 20px;
     color: white;
+    margin: 5px;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 12px;
     text-align: center;
     text-decoration: none;
     border: none;
+    text-align: center;
 }
 .ActionButton:hover {
     background-color: lightgrey;
+}
+@media (max-width: 1000px){
+    .ActionButton {
+        font-size: 10px;
+        height: 16px;
+    }
 }
