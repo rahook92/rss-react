@@ -16,6 +16,9 @@
     font-size: 16px;
     font-weight: 500;
 }
+.menuIcon {
+    height: 30px;
+}
 @media(max-width: 1000px){
     .Link {
         font-size: 14px;
