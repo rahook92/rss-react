@@ -17,7 +17,7 @@
     font-weight: 500;
 }
 .menuIcon {
-    height: 30px;
+    height: 25px;
 }
 @media(max-width: 1000px){
     .Link {
@@ -31,6 +31,6 @@
 }
 @media(max-width: 700px){
     .menuIcon {
-        object-fit: contain;
+        object-fit: cover;
     }
 }
