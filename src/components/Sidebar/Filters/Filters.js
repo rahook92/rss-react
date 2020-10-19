@@ -22,8 +22,6 @@ class Filters extends Component {
         return (
             <div>
                 <div className={classes.Dropdown}>
-                    <label htmlFor='category'>Category</label>
-        
                     <select value={this.state.value} onChange={this.handleChange} name='category' id='category'>
                         <option value='All' name='All'>All</option>
                         <option value='Politics' name='Politics'>Politics</option>
